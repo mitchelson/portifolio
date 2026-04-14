@@ -51,6 +51,16 @@ const resources = {
         experience: "Experience",
         projects: "Projects",
         stack: "Stack",
+        contact: "Contact",
+      },
+      contact: {
+        title: "Get in Touch",
+        subtitle: "Have a project in mind or want to discuss opportunities? Feel free to reach out through any of the channels below.",
+        cta: {
+          title: "Let's build something great together",
+          description: "Available for freelance projects and full-time opportunities.",
+          button: "Send Email",
+        },
       }
     }
   },
@@ -103,6 +113,16 @@ const resources = {
         experience: "Experiência",
         projects: "Projetos",
         stack: "Stack",
+        contact: "Contato",
+      },
+      contact: {
+        title: "Entre em Contato",
+        subtitle: "Tem um projeto em mente ou quer discutir oportunidades? Sinta-se à vontade para entrar em contato por qualquer um dos canais abaixo.",
+        cta: {
+          title: "Vamos construir algo incrível juntos",
+          description: "Disponível para projetos freelance e oportunidades em tempo integral.",
+          button: "Enviar Email",
+        },
       }
     }
   }

@@ -37,6 +37,9 @@ export default function Navbar() {
           <button onClick={() => scrollToSection('stack')} className="text-xs uppercase tracking-widest text-white/60 hover:text-white transition-colors">
             {t('nav.stack')}
           </button>
+          <button onClick={() => scrollToSection('contact')} className="text-xs uppercase tracking-widest text-white/60 hover:text-white transition-colors">
+            {t('nav.contact')}
+          </button>
         </div>
       </div>
 
