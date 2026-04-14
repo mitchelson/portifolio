@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import profileImg from '@/assets/profile.webp';
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -69,10 +70,9 @@ export default function Hero() {
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
             <img
-              src=""
-              alt="Architectural Visualization"
-              className="w-full h-full object-cover opacity-50 grayscale"
-              referrerPolicy="no-referrer"
+              src={profileImg}
+              alt="Mitchelson Silva"
+              className="w-full h-full object-cover opacity-80"
             />
             <div className="absolute bottom-8 left-8 right-8 z-20">
               <div className="flex flex-col gap-2">
