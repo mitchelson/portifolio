@@ -56,6 +56,7 @@ const resources = {
       contact: {
         title: "Get in Touch",
         subtitle: "Have a project in mind or want to discuss opportunities? Feel free to reach out through any of the channels below.",
+        openToRelocate: "Open to relocate with visa sponsorship",
         cta: {
           title: "Let's build something great together",
           description: "Available for freelance projects and full-time opportunities.",
@@ -118,6 +119,7 @@ const resources = {
       contact: {
         title: "Entre em Contato",
         subtitle: "Tem um projeto em mente ou quer discutir oportunidades? Sinta-se à vontade para entrar em contato por qualquer um dos canais abaixo.",
+        openToRelocate: "Aberto a relocação com patrocínio de visto",
         cta: {
           title: "Vamos construir algo incrível juntos",
           description: "Disponível para projetos freelance e oportunidades em tempo integral.",

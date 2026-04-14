@@ -98,6 +98,22 @@ export default function Contact() {
             ))}
           </div>
 
+          {/* Relocate Badge */}
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5, ease: 'circOut' }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
+            <div className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm">
+              <div className="w-2 h-2 rounded-full bg-white/60 animate-pulse" />
+              <span className="text-sm font-light text-white/80">
+                {t('contact.openToRelocate')}
+              </span>
+            </div>
+          </motion.div>
+
           {/* CTA Section */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
