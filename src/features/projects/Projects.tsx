@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Tag, BarChart2, MessageSquare, Wallet, ArrowUpRight, LucideIcon } from 'lucide-react';
+import { Tag, BarChart2, MessageSquare, Wallet, ArrowUpRight } from 'lucide-react';
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -14,7 +13,6 @@ export default function Projects() {
       description: t('projects.taNaPromo.description'),
       tags: ['React Native', 'AI', 'OneSignal'],
       icon: Tag,
-      initials: 'TnP',
       link: t('projects.taNaPromo.link')
     },
     {
@@ -23,7 +21,6 @@ export default function Projects() {
       description: t('projects.tradePlus.description'),
       tags: ['SaaS', 'Mobile', 'Real-time'],
       icon: BarChart2,
-      initials: 'T+',
       link: t('projects.tradePlus.link')
     },
     {
@@ -32,7 +29,6 @@ export default function Projects() {
       description: t('projects.airChat.description'),
       tags: ['P2P', 'Mesh', 'Offline', 'Swift'],
       icon: MessageSquare,
-      initials: 'AC',
       link: t('projects.airChat.link')
     },
     {
@@ -41,7 +37,6 @@ export default function Projects() {
       description: t('projects.konta.description'),
       tags: ['Swift', 'Firebase', 'iOS', 'Finance'],
       icon: Wallet,
-      initials: 'K',
       link: t('projects.konta.link')
     }
   ];
@@ -57,56 +52,46 @@ export default function Projects() {
             <div className="h-px w-24 bg-white/20" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {projects.map((project, index) => (
-              <motion.div
+              <motion.a
                 key={project.id}
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: index * 0.1, ease: "circOut" }}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ x: -20, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: "circOut" }}
                 viewport={{ once: true }}
+                className="group flex items-start gap-5 p-5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/5 hover:border-white/10 transition-all duration-300"
               >
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="block">
-                  <Card className="group overflow-hidden border-white/5 bg-white/5 hover:bg-white/10 transition-all duration-500 cursor-pointer">
-                    <div className="relative flex items-center justify-center aspect-video bg-white/[0.03] border-b border-white/5 overflow-hidden">
-                      {/* Background subtle pattern */}
-                      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+                {/* Icon */}
+                <div className="shrink-0 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300">
+                  <project.icon className="w-5 h-5 text-white/40 group-hover:text-white/70 transition-colors duration-300" />
+                </div>
 
-                      <div className="relative flex flex-col items-center gap-4">
-                        <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300">
-                          <project.icon className="w-8 h-8 text-white/40 group-hover:text-white/70 transition-colors duration-300" />
-                        </div>
-                        <span className="text-xs uppercase tracking-[0.25em] text-white/20 font-medium group-hover:text-white/40 transition-colors duration-300">
-                          {project.initials}
-                        </span>
-                      </div>
+                {/* Content */}
+                <div className="flex-1 min-w-0 flex flex-col gap-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="text-lg font-light text-white truncate">
+                      {project.title}
+                    </h3>
+                    <ArrowUpRight className="shrink-0 w-4 h-4 text-white/20 group-hover:text-white/60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                  </div>
 
-                      <div className="absolute top-4 right-4">
-                        <div className="w-8 h-8 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <ArrowUpRight className="w-3.5 h-3.5 text-white/60" />
-                        </div>
-                      </div>
-                    </div>
-                    <CardContent className="p-8 flex flex-col gap-4">
-                      <div className="flex justify-between items-start">
-                        <h3 className="text-2xl font-light tracking-tight text-white">
-                          {project.title}
-                        </h3>
-                      </div>
-                      <p className="text-white/60 font-light leading-relaxed">
-                        {project.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {project.tags.map(tag => (
-                          <Badge key={tag} variant="secondary" className="bg-white/5 text-white/40 text-[10px] uppercase tracking-widest font-medium border-none">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </a>
-              </motion.div>
+                  <p className="text-sm text-white/50 font-light leading-relaxed line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-1.5 mt-1">
+                    {project.tags.map(tag => (
+                      <Badge key={tag} variant="secondary" className="bg-white/5 text-white/40 text-[9px] uppercase tracking-widest font-medium border-none px-2 py-0.5">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </motion.a>
             ))}
           </div>
         </div>
