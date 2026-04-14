@@ -61,7 +61,7 @@ export default function Experience() {
             <div className="h-px w-24 bg-white/20" />
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col md:pl-10">
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.company}
@@ -71,6 +71,61 @@ export default function Experience() {
                 viewport={{ once: true }}
                 className="group relative grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 py-12 border-b border-white/5 last:border-none"
               >
+                {/* Timeline indicator */}
+                <div className="hidden md:flex absolute left-[-40px] top-0 bottom-0 flex-col items-center">
+                  {/* Connector line above dot */}
+                  {index === 0 ? (
+                    <div className="w-px flex-1 bg-transparent" />
+                  ) : (
+                    <motion.div
+                      className="w-px flex-1 bg-white/20"
+                      initial={{ scaleY: 0, originY: 0 }}
+                      whileInView={{ scaleY: 1 }}
+                      transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+                      viewport={{ once: true }}
+                    />
+                  )}
+
+                  {/* Dot */}
+                  <motion.div
+                    className="relative flex items-center justify-center"
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 + 0.2, ease: "backOut" }}
+                    viewport={{ once: true }}
+                  >
+                    {/* Pulse ring for first (current) item */}
+                    {index === 0 && (
+                      <motion.div
+                        className="absolute w-4 h-4 rounded-full border border-white/30"
+                        animate={{ scale: [1, 1.8], opacity: [0.4, 0] }}
+                        transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+                      />
+                    )}
+                    <div
+                      className={`w-2 h-2 rounded-full border transition-colors duration-300 ${
+                        index === 0
+                          ? 'bg-white border-white'
+                          : 'bg-transparent border-white/40 group-hover:border-white/80 group-hover:bg-white/20'
+                      }`}
+                    />
+                  </motion.div>
+
+                  {/* Connector line below dot */}
+                  {index < experiences.length - 1 && (
+                    <motion.div
+                      className="w-px flex-1 bg-white/20"
+                      initial={{ scaleY: 0, originY: 0 }}
+                      whileInView={{ scaleY: 1 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 + 0.3, ease: "easeOut" }}
+                      viewport={{ once: true }}
+                    />
+                  )}
+                  {index === experiences.length - 1 && (
+                    <div className="w-px flex-1 bg-transparent" />
+                  )}
+                </div>
+
                 <div className="flex flex-col gap-1">
                   <span className="text-xs uppercase tracking-widest text-white/40 font-medium">
                     {exp.period}
