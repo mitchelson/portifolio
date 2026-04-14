@@ -21,9 +21,16 @@ const KEYWORDS = [
   'TanStack Query',
   'styled-components',
   'framer-motion',
+  // Expo ecosystem
+  'Expo',
+  'Expo EAS',
+  // Testing
+  'Jest',
   // Infra & tools
   'Socket.IO',
   'Firebase',
+  'Firebase Remote Config',
+  'Firebase Cloud Storage',
   'Segment',
   'Sentry',
   'UXCam',
@@ -32,6 +39,13 @@ const KEYWORDS = [
   'CI/CD',
   'Xcode',
   'Gradle',
+  'n8n',
+  // CMS & LMS
+  'Joomla',
+  'Moodle',
+  // Stores
+  'Apple App Store',
+  'Google Play Store',
   // Payments
   'Stripe',
   'Apple Pay',
