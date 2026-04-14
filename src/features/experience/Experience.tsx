@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import HighlightedText from './HighlightedText';
 
 export default function Experience() {
   const { t } = useTranslation();
@@ -88,7 +89,7 @@ export default function Experience() {
                     {exp.role}
                   </h4>
                   <p className="max-w-2xl text-white/60 font-light leading-relaxed">
-                    {exp.description}
+                    <HighlightedText text={exp.description} />
                   </p>
                 </div>
               </motion.div>
