@@ -24,7 +24,7 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -49,8 +49,8 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.8, ease: "circOut" }}
             className="flex items-center gap-6 mt-4"
           >
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="rounded-full px-8 bg-white text-black hover:bg-white/90 transition-all group"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
@@ -68,9 +68,9 @@ export default function Hero() {
             className="relative w-[400px] h-[600px] border border-white/10 rounded-2xl overflow-hidden bg-white/5 backdrop-blur-sm"
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
-            <img 
-              src="https://picsum.photos/seed/mobile-architect/800/1200" 
-              alt="Architectural Visualization" 
+            <img
+              src=""
+              alt="Architectural Visualization"
               className="w-full h-full object-cover opacity-50 grayscale"
               referrerPolicy="no-referrer"
             />
@@ -84,7 +84,7 @@ export default function Hero() {
               </div>
             </div>
           </motion.div>
-          
+
           {/* Floating Badge */}
           <motion.div
             animate={{ y: [0, -10, 0] }}
