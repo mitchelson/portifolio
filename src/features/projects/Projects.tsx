@@ -12,7 +12,7 @@ export default function Projects() {
       id: 'taNaPromo',
       title: t('projects.taNaPromo.title'),
       description: t('projects.taNaPromo.description'),
-      tags: ['React Native', 'Stripe', 'OneSignal'],
+      tags: ['React Native', 'AI', 'OneSignal'],
       image: 'https://picsum.photos/seed/promo/800/600',
       link: t('projects.taNaPromo.link')
     },
@@ -28,7 +28,7 @@ export default function Projects() {
       id: 'airChat',
       title: t('projects.airChat.title'),
       description: t('projects.airChat.description'),
-      tags: ['P2P', 'Mesh', 'Offline'],
+      tags: ['P2P', 'Mesh', 'Offline', 'Swift'],
       image: 'https://picsum.photos/seed/chat/800/600',
       link: t('projects.airChat.link')
     },
@@ -36,7 +36,7 @@ export default function Projects() {
       id: 'konta',
       title: t('projects.konta.title'),
       description: t('projects.konta.description'),
-      tags: ['Swift', 'Firebase', 'iOS'],
+      tags: ['Swift', 'Firebase', 'iOS', 'Finance'],
       image: 'https://picsum.photos/seed/finance/800/600',
       link: t('projects.konta.link')
     }
@@ -65,8 +65,8 @@ export default function Projects() {
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="block">
                   <Card className="group overflow-hidden border-white/5 bg-white/5 hover:bg-white/10 transition-all duration-500 cursor-pointer">
                     <div className="relative aspect-video overflow-hidden">
-                      <img 
-                        src={project.image} 
+                      <img
+                        src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                         referrerPolicy="no-referrer"
