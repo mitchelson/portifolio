@@ -25,12 +25,12 @@ const resources = {
         tradePlus: {
           title: "Trade+",
           description: "SaaS and mobile platform focused on operational efficiency and real-time field visibility.",
-          link: "https://woba.com.br",
+          link: "https://trademanager.com.br",
         },
         airChat: {
-          title: "AirChat",
+          title: "Pigz App",
           description: "Offline messaging app using P2P mesh technology for serverless communication.",
-          link: "https://mavielo.com.br",
+          link: "https://apps.apple.com/br/app/pigz/id1526557835?l=en-GB",
         },
         konta: {
           title: "Konta",
