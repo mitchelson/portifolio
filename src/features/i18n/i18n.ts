@@ -88,17 +88,17 @@ const resources = {
         tradePlus: {
           title: "Trade+",
           description: "Plataforma SaaS e mobile voltada para eficiência operacional e visibilidade de campo em tempo real.",
-          link: "https://woba.com.br",
+          link: "https://trademanager.com.br",
         },
         airChat: {
-          title: "AirChat",
-          description: "Aplicativo de mensageria offline utilizando tecnologia mesh P2P para comunicação sem servidor.",
-          link: "https://mavielo.com.br",
+          title: "Pigz App",
+          description: "Aplicativo de pedido de comida, feito com React Native.",
+          link: "https://apps.apple.com/br/app/pigz/id1526557835?l=pt-BR",
         },
         konta: {
           title: "Konta",
           description: "Solução de finanças pessoais desenvolvida nativamente em Swift com integração Firebase.",
-          link: "https://apps.apple.com/br/app/konta-personal-finance/id6761537625?l=en-GB",
+          link: "https://apps.apple.com/br/app/konta-personal-finance/id6761537625?l=pt-BR",
         },
       },
       experience: {
