@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, ArrowUpRight } from 'lucide-react';
+import { Tag, BarChart2, MessageSquare, Wallet, ArrowUpRight, LucideIcon } from 'lucide-react';
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -13,7 +13,8 @@ export default function Projects() {
       title: t('projects.taNaPromo.title'),
       description: t('projects.taNaPromo.description'),
       tags: ['React Native', 'AI', 'OneSignal'],
-      image: 'https://picsum.photos/seed/promo/800/600',
+      icon: Tag,
+      initials: 'TnP',
       link: t('projects.taNaPromo.link')
     },
     {
@@ -21,7 +22,8 @@ export default function Projects() {
       title: t('projects.tradePlus.title'),
       description: t('projects.tradePlus.description'),
       tags: ['SaaS', 'Mobile', 'Real-time'],
-      image: 'https://picsum.photos/seed/trade/800/600',
+      icon: BarChart2,
+      initials: 'T+',
       link: t('projects.tradePlus.link')
     },
     {
@@ -29,7 +31,8 @@ export default function Projects() {
       title: t('projects.airChat.title'),
       description: t('projects.airChat.description'),
       tags: ['P2P', 'Mesh', 'Offline', 'Swift'],
-      image: 'https://picsum.photos/seed/chat/800/600',
+      icon: MessageSquare,
+      initials: 'AC',
       link: t('projects.airChat.link')
     },
     {
@@ -37,7 +40,8 @@ export default function Projects() {
       title: t('projects.konta.title'),
       description: t('projects.konta.description'),
       tags: ['Swift', 'Firebase', 'iOS', 'Finance'],
-      image: 'https://picsum.photos/seed/finance/800/600',
+      icon: Wallet,
+      initials: 'K',
       link: t('projects.konta.link')
     }
   ];
@@ -64,16 +68,22 @@ export default function Projects() {
               >
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="block">
                   <Card className="group overflow-hidden border-white/5 bg-white/5 hover:bg-white/10 transition-all duration-500 cursor-pointer">
-                    <div className="relative aspect-video overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                        referrerPolicy="no-referrer"
-                      />
+                    <div className="relative flex items-center justify-center aspect-video bg-white/[0.03] border-b border-white/5 overflow-hidden">
+                      {/* Background subtle pattern */}
+                      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+
+                      <div className="relative flex flex-col items-center gap-4">
+                        <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300">
+                          <project.icon className="w-8 h-8 text-white/40 group-hover:text-white/70 transition-colors duration-300" />
+                        </div>
+                        <span className="text-xs uppercase tracking-[0.25em] text-white/20 font-medium group-hover:text-white/40 transition-colors duration-300">
+                          {project.initials}
+                        </span>
+                      </div>
+
                       <div className="absolute top-4 right-4">
-                        <div className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <ArrowUpRight className="w-4 h-4 text-white" />
+                        <div className="w-8 h-8 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <ArrowUpRight className="w-3.5 h-3.5 text-white/60" />
                         </div>
                       </div>
                     </div>
