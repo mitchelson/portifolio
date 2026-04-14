@@ -29,7 +29,7 @@ const resources = {
         },
         airChat: {
           title: "Pigz App",
-          description: "Offline messaging app using P2P mesh technology for serverless communication.",
+          description: "Food Delivery app, build with React Native.",
           link: "https://apps.apple.com/br/app/pigz/id1526557835?l=en-GB",
         },
         konta: {
