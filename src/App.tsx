@@ -8,6 +8,7 @@ import Hero from './features/hero/Hero';
 import TechStack from './features/tech-stack/TechStack';
 import Projects from './features/projects/Projects';
 import Experience from './features/experience/Experience';
+import Contact from './features/contact/Contact';
 import Footer from './features/layout/Footer';
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
         <Experience />
         <Projects />
         <TechStack />
+        <Contact />
       </main>
       <Footer />
     </div>

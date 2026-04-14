@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import HighlightedText from './HighlightedText';
 
 export default function Experience() {
   const { t } = useTranslation();
@@ -10,14 +11,14 @@ export default function Experience() {
       role: 'Senior Mobile Engineer',
       period: '09/2025 - Present',
       description: t('experience.invillia'),
-      link: 'https://invillia.com'
+      link: 'https://aircompany.ai'
     },
     {
       company: 'Strat2gyAI',
       role: 'Senior Mobile Architect',
       period: '09/2025 - 09/2025',
       description: t('experience.strat2gy'),
-      link: 'https://strat2gy.ai'
+      link: 'https://strat2gyai.com'
     },
     {
       company: 'Mavielo',
@@ -60,7 +61,7 @@ export default function Experience() {
             <div className="h-px w-24 bg-white/20" />
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col md:pl-10">
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.company}
@@ -70,6 +71,61 @@ export default function Experience() {
                 viewport={{ once: true }}
                 className="group relative grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 py-12 border-b border-white/5 last:border-none"
               >
+                {/* Timeline indicator - aligned with company name */}
+                <div className="hidden md:block absolute left-[-40px] top-0 bottom-0">
+                  {/* Vertical line spanning full height */}
+                  <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px">
+                    {/* Line above dot (hidden for first item) */}
+                    {index > 0 && (
+                      <motion.div
+                        className="absolute top-0 w-full bg-white/20"
+                        style={{ height: 'calc(3rem + 18px)' }}
+                        initial={{ scaleY: 0, originY: 0 }}
+                        whileInView={{ scaleY: 1 }}
+                        transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+                        viewport={{ once: true }}
+                      />
+                    )}
+                    {/* Line below dot (hidden for last item) */}
+                    {index < experiences.length - 1 && (
+                      <motion.div
+                        className="absolute w-full bg-white/20"
+                        style={{ top: 'calc(3rem + 22px)', bottom: 0 }}
+                        initial={{ scaleY: 0, originY: 0 }}
+                        whileInView={{ scaleY: 1 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 + 0.3, ease: "easeOut" }}
+                        viewport={{ once: true }}
+                      />
+                    )}
+                  </div>
+
+                  {/* Dot - positioned at company name level (py-12 = 3rem, plus small offset for text baseline) */}
+                  <motion.div
+                    className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center"
+                    style={{ top: 'calc(3rem + 16px)' }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 + 0.2, ease: "backOut" }}
+                    viewport={{ once: true }}
+                  >
+                    {/* Pulse ring for first (current) item */}
+                    {index === 0 && (
+                      <motion.div
+                        className="absolute w-4 h-4 rounded-full border border-white/30"
+                        animate={{ scale: [1, 1.8], opacity: [0.4, 0] }}
+                        transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+                      />
+                    )}
+                    <div
+                      className={`w-2 h-2 rounded-full border transition-colors duration-300 ${
+                        index === 0
+                          ? 'bg-white border-white'
+                          : 'bg-transparent border-white/40 group-hover:border-white/80 group-hover:bg-white/20'
+                      }`}
+                    />
+                  </motion.div>
+                </div>
+
                 <div className="flex flex-col gap-1">
                   <span className="text-xs uppercase tracking-widest text-white/40 font-medium">
                     {exp.period}
@@ -88,7 +144,7 @@ export default function Experience() {
                     {exp.role}
                   </h4>
                   <p className="max-w-2xl text-white/60 font-light leading-relaxed">
-                    {exp.description}
+                    <HighlightedText text={exp.description} />
                   </p>
                 </div>
               </motion.div>
