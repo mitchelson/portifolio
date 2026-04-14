@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import profileImg from '@/assets/profile.webp';
+import profileImg from '@/src/assets/profile.webp';
 
 export default function Hero() {
   const { t } = useTranslation();
