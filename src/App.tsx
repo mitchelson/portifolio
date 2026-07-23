@@ -10,8 +10,11 @@ import Projects from './features/projects/Projects';
 import Experience from './features/experience/Experience';
 import Contact from './features/contact/Contact';
 import Footer from './features/layout/Footer';
+import { useHtmlLang } from './hooks/useHtmlLang';
 
 export default function App() {
+  useHtmlLang();
+  
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
       <Navbar />
