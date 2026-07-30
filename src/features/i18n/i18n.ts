@@ -17,10 +17,10 @@ const resources = {
       },
       projects: {
         title: "Featured Projects",
-        taNaPromo: {
-          title: "Tá na Promo",
-          description: "Mobile app for real-time deal discovery with payment integration (Stripe/Apple/Google Pay) and engagement strategies via OneSignal.",
-          link: "https://tanapromo.app",
+        zenvixFotos: {
+          title: "Zenvix Fotos",
+          description: "Event photo marketplace with on-device facial recognition. Find and buy high-res photos from weddings, graduations, sports and parties — PIX or card, built for photographers.",
+          link: "https://zenvixfotos.com",
         },
         tradePlus: {
           title: "Trade+",
@@ -80,10 +80,10 @@ const resources = {
       },
       projects: {
         title: "Projetos em Destaque",
-        taNaPromo: {
-          title: "Tá na Promo",
-          description: "Aplicativo mobile para descoberta de promoções em tempo real com integração de pagamentos (Stripe/Apple/Google Pay) e estratégias de engajamento via OneSignal.",
-          link: "https://tanapromo.app",
+        zenvixFotos: {
+          title: "Zenvix Fotos",
+          description: "Marketplace de fotos de eventos com reconhecimento facial no navegador. Encontre e compre fotos em alta resolução de casamentos, formaturas, esportes e festas — PIX ou cartão, feito para fotógrafos.",
+          link: "https://zenvixfotos.com",
         },
         tradePlus: {
           title: "Trade+",

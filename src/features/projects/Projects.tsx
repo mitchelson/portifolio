@@ -1,19 +1,19 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
-import { Tag, BarChart2, MessageSquare, Wallet, ArrowUpRight } from 'lucide-react';
+import { Camera, BarChart2, MessageSquare, Wallet, ArrowUpRight } from 'lucide-react';
 
 export default function Projects() {
   const { t } = useTranslation();
 
   const projects = [
     {
-      id: 'taNaPromo',
-      title: t('projects.taNaPromo.title'),
-      description: t('projects.taNaPromo.description'),
-      tags: ['React Native', 'AI', 'OneSignal'],
-      icon: Tag,
-      link: t('projects.taNaPromo.link')
+      id: 'zenvixFotos',
+      title: t('projects.zenvixFotos.title'),
+      description: t('projects.zenvixFotos.description'),
+      tags: ['Next.js', 'Facial Recognition', 'Marketplace'],
+      icon: Camera,
+      link: t('projects.zenvixFotos.link')
     },
     {
       id: 'tradePlus',
