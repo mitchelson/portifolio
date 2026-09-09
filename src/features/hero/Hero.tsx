@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
@@ -6,10 +6,10 @@ import profileImg from '@/src/assets/profile.webp';
 
 export default function Hero() {
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 pt-20 overflow-hidden">
-      {/* Background Decorative Elements */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -18,10 +18,10 @@ export default function Hero() {
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: 'circOut' }}
           >
             <span className="text-xs uppercase tracking-[0.3em] text-white/40 font-medium">
-              Senior Mobile Architect
+              {t('hero.eyebrow')}
             </span>
           </motion.div>
 
@@ -38,7 +38,7 @@ export default function Hero() {
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6, ease: "circOut" }}
+            transition={{ duration: 1, delay: 0.6, ease: 'circOut' }}
             className="max-w-md text-lg md:text-xl text-white/60 font-light leading-relaxed"
           >
             {t('hero.subtitle')}
@@ -47,17 +47,34 @@ export default function Hero() {
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8, ease: "circOut" }}
+            transition={{ duration: 1, delay: 0.8, ease: 'circOut' }}
             className="flex items-center gap-6 mt-4"
           >
             <Button
               size="lg"
               className="rounded-full px-8 bg-white text-black hover:bg-white/90 transition-all group"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() =>
+                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+              }
             >
               {t('hero.cta')}
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
+          </motion.div>
+
+          {/* Mobile profile image */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 1, ease: 'circOut' }}
+            className="lg:hidden mt-6 relative w-full max-w-sm aspect-[2/3] border border-white/10 rounded-2xl overflow-hidden bg-white/5"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
+            <img
+              src={profileImg}
+              alt="Mitchelson Silva"
+              className="w-full h-full object-cover opacity-80"
+            />
           </motion.div>
         </div>
 
@@ -78,21 +95,22 @@ export default function Hero() {
               <div className="flex flex-col gap-2">
                 <div className="h-px w-full bg-white/20" />
                 <div className="flex justify-between items-center text-[10px] uppercase tracking-widest text-white/40">
-                  <span>7+ Years Exp.</span>
-                  <span>Based in Brazil</span>
+                  <span>{t('hero.yearsExp')}</span>
+                  <span>{t('hero.location')}</span>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Floating Badge */}
           <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            animate={prefersReducedMotion ? undefined : { y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             className="absolute -bottom-6 -left-6 bg-white text-black p-6 rounded-2xl shadow-2xl z-30"
           >
             <div className="text-3xl font-bold tracking-tighter">RN</div>
-            <div className="text-[10px] uppercase tracking-widest font-semibold opacity-60">Expertise</div>
+            <div className="text-[10px] uppercase tracking-widest font-semibold opacity-60">
+              {t('hero.expertise')}
+            </div>
           </motion.div>
         </div>
       </div>

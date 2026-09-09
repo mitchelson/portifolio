@@ -1,11 +1,5 @@
 # Robots.txt for Mitchelson Silva Portfolio
-# Allow all search engines to crawl the site
-
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://ai.studio/apps/2648f33d-a47a-4534-8a18-85753e092c40/sitemap.xml
-
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
+Sitemap: https://portifolio-rho-sand-47.vercel.app/sitemap.xml

@@ -6,11 +6,16 @@ const resources = {
     translation: {
       hero: {
         title: "Mitchelson Silva | Senior Mobile Architect",
+        eyebrow: "Senior Mobile Architect",
         subtitle: "Specialist in designing and scaling enterprise-level applications, focusing on React Native, component architecture, and high performance.",
         cta: "View Projects",
+        yearsExp: "7+ Years Exp.",
+        location: "Based in Brazil",
+        expertise: "Expertise",
       },
       tech: {
         title: "Core Tech Stack",
+        core: "Core Technologies",
         management: "State & Data Management",
         ecosystem: "Ecosystem & Integration",
         ai: "AI & Productivity",
@@ -27,9 +32,9 @@ const resources = {
           description: "SaaS and mobile platform focused on operational efficiency and real-time field visibility.",
           link: "https://trademanager.com.br",
         },
-        airChat: {
+        pigz: {
           title: "Pigz App",
-          description: "Food Delivery app, build with React Native.",
+          description: "Food delivery app built with React Native — product discovery, checkout, real-time tracking, and payments (card, PIX, Apple Pay, Google Pay).",
           link: "https://apps.apple.com/br/app/pigz/id1526557835?l=en-GB",
         },
         konta: {
@@ -69,11 +74,16 @@ const resources = {
     translation: {
       hero: {
         title: "Mitchelson Silva | Senior Mobile Architect",
+        eyebrow: "Senior Mobile Architect",
         subtitle: "Especialista em projetar e escalar aplicações de nível empresarial, com foco em React Native, arquitetura de componentes e alta performance.",
         cta: "Ver Projetos",
+        yearsExp: "7+ Anos de Exp.",
+        location: "Baseado no Brasil",
+        expertise: "Expertise",
       },
       tech: {
         title: "Tech Stack Principal",
+        core: "Tecnologias Principais",
         management: "Gestão de Estado e Dados",
         ecosystem: "Ecossistema e Integração",
         ai: "IA e Produtividade",
@@ -90,9 +100,9 @@ const resources = {
           description: "Plataforma SaaS e mobile voltada para eficiência operacional e visibilidade de campo em tempo real.",
           link: "https://trademanager.com.br",
         },
-        airChat: {
+        pigz: {
           title: "Pigz App",
-          description: "Aplicativo de pedido de comida, feito com React Native.",
+          description: "App de delivery de comida em React Native — descoberta de produtos, checkout, rastreamento em tempo real e pagamentos (cartão, PIX, Apple Pay, Google Pay).",
           link: "https://apps.apple.com/br/app/pigz/id1526557835?l=pt-BR",
         },
         konta: {

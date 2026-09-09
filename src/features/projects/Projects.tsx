@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
-import { Camera, BarChart2, MessageSquare, Wallet, ArrowUpRight } from 'lucide-react';
+import { Camera, BarChart2, UtensilsCrossed, Wallet, ArrowUpRight } from 'lucide-react';
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ export default function Projects() {
       description: t('projects.zenvixFotos.description'),
       tags: ['Next.js', 'Facial Recognition', 'Marketplace'],
       icon: Camera,
-      link: t('projects.zenvixFotos.link')
+      link: t('projects.zenvixFotos.link'),
     },
     {
       id: 'tradePlus',
@@ -21,15 +21,15 @@ export default function Projects() {
       description: t('projects.tradePlus.description'),
       tags: ['SaaS', 'Mobile', 'Real-time'],
       icon: BarChart2,
-      link: t('projects.tradePlus.link')
+      link: t('projects.tradePlus.link'),
     },
     {
-      id: 'airChat',
-      title: t('projects.airChat.title'),
-      description: t('projects.airChat.description'),
-      tags: ['P2P', 'Mesh', 'Offline', 'Swift'],
-      icon: MessageSquare,
-      link: t('projects.airChat.link')
+      id: 'pigz',
+      title: t('projects.pigz.title'),
+      description: t('projects.pigz.description'),
+      tags: ['React Native', 'Food Delivery', 'TypeScript', 'Socket.IO'],
+      icon: UtensilsCrossed,
+      link: t('projects.pigz.link'),
     },
     {
       id: 'konta',
@@ -37,8 +37,8 @@ export default function Projects() {
       description: t('projects.konta.description'),
       tags: ['Swift', 'Firebase', 'iOS', 'Finance'],
       icon: Wallet,
-      link: t('projects.konta.link')
-    }
+      link: t('projects.konta.link'),
+    },
   ];
 
   return (
@@ -61,16 +61,14 @@ export default function Projects() {
                 rel="noopener noreferrer"
                 initial={{ x: -20, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: "circOut" }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: 'circOut' }}
                 viewport={{ once: true }}
                 className="group flex items-start gap-5 p-5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/5 hover:border-white/10 transition-all duration-300"
               >
-                {/* Icon */}
                 <div className="shrink-0 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300">
                   <project.icon className="w-5 h-5 text-white/40 group-hover:text-white/70 transition-colors duration-300" />
                 </div>
 
-                {/* Content */}
                 <div className="flex-1 min-w-0 flex flex-col gap-2">
                   <div className="flex items-center justify-between gap-2">
                     <h3 className="text-lg font-light text-white truncate">
@@ -84,8 +82,12 @@ export default function Projects() {
                   </p>
 
                   <div className="flex flex-wrap gap-1.5 mt-1">
-                    {project.tags.map(tag => (
-                      <Badge key={tag} variant="secondary" className="bg-white/5 text-white/40 text-[9px] uppercase tracking-widest font-medium border-none px-2 py-0.5">
+                    {project.tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="secondary"
+                        className="bg-white/5 text-white/40 text-[9px] uppercase tracking-widest font-medium border-none px-2 py-0.5"
+                      >
                         {tag}
                       </Badge>
                     ))}

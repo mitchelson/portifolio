@@ -2,19 +2,30 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 /**
- * Hook to sync the HTML lang attribute with i18n language
+ * Sync the HTML lang attribute with i18n language.
+ * Also applies ?lang=en|pt from the URL on first load.
  */
 export function useHtmlLang() {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    const currentLang = i18n.language;
+    const params = new URLSearchParams(window.location.search);
+    const langParam = params.get('lang');
+    if (langParam === 'en' || langParam === 'pt') {
+      if (i18n.language !== langParam) {
+        void i18n.changeLanguage(langParam);
+      }
+    }
+  }, [i18n]);
+
+  useEffect(() => {
+    const currentLang = i18n.language.startsWith('pt') ? 'pt' : 'en';
     document.documentElement.lang = currentLang;
-    
-    // Update Open Graph locale meta tag
-    const ogLocale = document.querySelector('meta[property="og:locale"]');
-    if (ogLocale) {
-      ogLocale.setAttribute('content', currentLang === 'pt' ? 'pt_BR' : 'en_US');
+
+    const url = new URL(window.location.href);
+    if (url.searchParams.get('lang') !== currentLang) {
+      url.searchParams.set('lang', currentLang);
+      window.history.replaceState({}, '', url.toString());
     }
   }, [i18n.language]);
 }

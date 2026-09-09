@@ -11,43 +11,43 @@ export default function Experience() {
       role: 'Senior Mobile Engineer',
       period: '09/2025 - Present',
       description: t('experience.invillia'),
-      link: 'https://aircompany.ai'
+      link: 'https://www.invillia.com',
     },
     {
       company: 'Strat2gyAI',
       role: 'Senior Mobile Architect',
-      period: '09/2025 - 09/2025',
+      period: '09/2025',
       description: t('experience.strat2gy'),
-      link: 'https://strat2gyai.com'
+      link: 'https://strat2gyai.com',
     },
     {
       company: 'Mavielo',
       role: 'Senior Frontend Engineer',
       period: '12/2024 - 09/2025',
       description: t('experience.mavielo'),
-      link: 'https://mavielo.com.br'
+      link: 'https://mavielo.com.br',
     },
     {
       company: 'Woba',
       role: 'Senior Mobile Engineer',
       period: '04/2022 - 12/2024',
       description: t('experience.woba'),
-      link: 'https://woba.com.br'
+      link: 'https://woba.com.br',
     },
     {
       company: 'Pigz',
       role: 'Lead Mobile Developer',
       period: '09/2020 - 04/2022',
       description: t('experience.pigz'),
-      link: 'https://pigz.com.br'
+      link: 'https://pigz.com.br',
     },
     {
       company: "Public Defender's Office",
       role: 'Frontend Developer',
       period: '06/2019 - 09/2020',
       description: t('experience.publicDefender'),
-      link: '#'
-    }
+      link: null as string | null,
+    },
   ];
 
   return (
@@ -130,14 +130,20 @@ export default function Experience() {
                   <span className="text-xs uppercase tracking-widest text-white/40 font-medium">
                     {exp.period}
                   </span>
-                  <a 
-                    href={exp.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-xl font-medium text-white group-hover:text-white/80 transition-colors flex items-center gap-2"
-                  >
-                    {exp.company}
-                  </a>
+                  {exp.link ? (
+                    <a
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xl font-medium text-white group-hover:text-white/80 transition-colors flex items-center gap-2"
+                    >
+                      {exp.company}
+                    </a>
+                  ) : (
+                    <span className="text-xl font-medium text-white group-hover:text-white/80 transition-colors">
+                      {exp.company}
+                    </span>
+                  )}
                 </div>
                 <div className="flex flex-col gap-4">
                   <h4 className="text-lg font-light text-white/80 italic">

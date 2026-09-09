@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { SEO_CONFIG } from '@/src/config/seo';
 
 interface SEOProps {
   title?: string;
@@ -8,67 +10,51 @@ interface SEOProps {
   url?: string;
 }
 
+function setMeta(selector: string, attr: string, value: string) {
+  const el = document.querySelector(selector);
+  if (el) el.setAttribute(attr, value);
+}
+
 /**
- * Hook to dynamically update SEO meta tags
+ * Dynamically sync document title and meta tags with the active language.
  */
 export function useSEO(props?: SEOProps) {
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
+
   useEffect(() => {
-    if (!props) return;
+    const isPt = lang === 'pt' || lang.startsWith('pt');
+    const title = props?.title ?? SEO_CONFIG.title;
+    const description =
+      props?.description ??
+      (isPt ? SEO_CONFIG.descriptionPt : SEO_CONFIG.description);
+    const keywords = props?.keywords ?? SEO_CONFIG.keywords;
+    const image = props?.image ?? SEO_CONFIG.image;
+    const url =
+      props?.url ??
+      `${SEO_CONFIG.url}${isPt ? '?lang=pt' : '?lang=en'}`;
 
-    const { title, description, keywords, image, url } = props;
+    document.title = title;
+    setMeta('meta[property="og:title"]', 'content', title);
+    setMeta('meta[name="twitter:title"]', 'content', title);
 
-    // Update title
-    if (title) {
-      document.title = title;
-      
-      // Update Open Graph title
-      const ogTitle = document.querySelector('meta[property="og:title"]');
-      if (ogTitle) ogTitle.setAttribute('content', title);
-      
-      // Update Twitter title
-      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-      if (twitterTitle) twitterTitle.setAttribute('content', title);
-    }
+    setMeta('meta[name="description"]', 'content', description);
+    setMeta('meta[property="og:description"]', 'content', description);
+    setMeta('meta[name="twitter:description"]', 'content', description);
 
-    // Update description
-    if (description) {
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) metaDescription.setAttribute('content', description);
-      
-      // Update Open Graph description
-      const ogDescription = document.querySelector('meta[property="og:description"]');
-      if (ogDescription) ogDescription.setAttribute('content', description);
-      
-      // Update Twitter description
-      const twitterDescription = document.querySelector('meta[name="twitter:description"]');
-      if (twitterDescription) twitterDescription.setAttribute('content', description);
-    }
+    setMeta('meta[name="keywords"]', 'content', keywords);
 
-    // Update keywords
-    if (keywords) {
-      const metaKeywords = document.querySelector('meta[name="keywords"]');
-      if (metaKeywords) metaKeywords.setAttribute('content', keywords);
-    }
+    setMeta('meta[property="og:image"]', 'content', image);
+    setMeta('meta[name="twitter:image"]', 'content', image);
 
-    // Update image
-    if (image) {
-      const ogImage = document.querySelector('meta[property="og:image"]');
-      if (ogImage) ogImage.setAttribute('content', image);
-      
-      const twitterImage = document.querySelector('meta[name="twitter:image"]');
-      if (twitterImage) twitterImage.setAttribute('content', image);
-    }
+    setMeta('link[rel="canonical"]', 'href', SEO_CONFIG.url);
+    setMeta('meta[property="og:url"]', 'content', url);
+    setMeta('meta[name="twitter:url"]', 'content', url);
 
-    // Update URL
-    if (url) {
-      const canonical = document.querySelector('link[rel="canonical"]');
-      if (canonical) canonical.setAttribute('href', url);
-      
-      const ogUrl = document.querySelector('meta[property="og:url"]');
-      if (ogUrl) ogUrl.setAttribute('content', url);
-      
-      const twitterUrl = document.querySelector('meta[name="twitter:url"]');
-      if (twitterUrl) twitterUrl.setAttribute('content', url);
-    }
-  }, [props]);
+    setMeta(
+      'meta[property="og:locale"]',
+      'content',
+      isPt ? 'pt_BR' : 'en_US',
+    );
+  }, [lang, props]);
 }

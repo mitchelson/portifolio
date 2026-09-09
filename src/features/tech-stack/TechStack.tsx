@@ -46,7 +46,7 @@ export default function TechStack() {
               viewport={{ once: true }}
               className="flex flex-col gap-6"
             >
-              <h3 className="text-xs uppercase tracking-widest text-white/40 font-medium">Core Technologies</h3>
+              <h3 className="text-xs uppercase tracking-widest text-white/40 font-medium">{t('tech.core')}</h3>
               <div className="flex flex-wrap gap-3">
                 {STACK.core.map((tech) => (
                   <motion.div key={tech} variants={item}>

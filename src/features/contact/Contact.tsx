@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Mail, Phone, Linkedin, Github, ArrowUpRight } from 'lucide-react';
+import { CONTACT } from '@/src/config/seo';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -9,26 +10,26 @@ export default function Contact() {
     {
       icon: Phone,
       label: 'WhatsApp',
-      value: '+55 95 99115-1464',
-      href: 'https://wa.me/5595991151464',
+      value: CONTACT.phoneDisplay,
+      href: CONTACT.whatsapp,
     },
     {
       icon: Mail,
       label: 'Email',
-      value: 'mitchelsonps@gmail.com',
-      href: 'mailto:mitchelsonps@gmail.com',
+      value: CONTACT.email,
+      href: `mailto:${CONTACT.email}`,
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: 'linkedin.com/in/miitch',
-      href: 'https://linkedin.com/in/miitch',
+      value: CONTACT.linkedin.label,
+      href: CONTACT.linkedin.url,
     },
     {
       icon: Github,
       label: 'GitHub',
-      value: 'github.com/mitchelson',
-      href: 'https://github.com/mitchelson',
+      value: CONTACT.github.label,
+      href: CONTACT.github.url,
     },
   ];
 
@@ -36,7 +37,6 @@ export default function Contact() {
     <section id="contact" className="py-24 px-6 bg-black">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-12">
-          {/* Header */}
           <div className="flex flex-col gap-4">
             <motion.h2
               initial={{ y: 20, opacity: 0 }}
@@ -65,7 +65,6 @@ export default function Contact() {
             </motion.p>
           </div>
 
-          {/* Contact Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactMethods.map((method, index) => (
               <motion.a
@@ -98,7 +97,6 @@ export default function Contact() {
             ))}
           </div>
 
-          {/* Relocate Badge */}
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
@@ -114,7 +112,6 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* CTA Section */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -131,7 +128,7 @@ export default function Contact() {
               </span>
             </div>
             <a
-              href="mailto:mitchelsonps@gmail.com"
+              href={`mailto:${CONTACT.email}`}
               className="inline-flex items-center gap-2 px-8 py-3 bg-white text-black rounded-full font-medium hover:bg-white/90 transition-colors group"
             >
               {t('contact.cta.button')}
