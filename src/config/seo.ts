@@ -6,18 +6,21 @@
 export const SITE_URL = 'https://portifolio-rho-sand-47.vercel.app';
 
 export const SEO_CONFIG = {
-  title: 'Mitchelson Silva | Senior Mobile Architect',
+  /** Name-first titles help rank for “Mitchelson Silva” queries. */
+  title: 'Mitchelson Silva — Portfolio | Senior Mobile Architect',
+  titlePt: 'Mitchelson Silva — Portfólio | Senior Mobile Architect',
   description:
-    'Senior Mobile Architect with 7+ years of experience in React Native, AI integration, and enterprise scaling. Specialist in designing high-performance mobile applications and component architecture.',
+    'Official portfolio of Mitchelson Silva (Mitch Silva), Senior Mobile Architect specializing in React Native, TypeScript, AI-integrated apps, and enterprise mobile systems. Projects include Tá na Promo, Zenvix Fotos, Trade+, Pigz, and Konta.',
   descriptionPt:
-    'Senior Mobile Architect com mais de 7 anos de experiência em React Native, integração de IA e escala enterprise. Especialista em aplicações móveis de alta performance e arquitetura de componentes.',
+    'Portfólio oficial de Mitchelson Silva (Mitch Silva), Senior Mobile Architect especializado em React Native, TypeScript, apps com IA e sistemas mobile enterprise. Projetos: Tá na Promo, Zenvix Fotos, Trade+, Pigz e Konta.',
   keywords:
-    'Mitchelson Silva, Mobile Architect, React Native, React Native Developer, iOS, Android, TypeScript, Mobile Development, Software Engineer, Tech Lead, AI Integration, Enterprise Applications',
+    'Mitchelson Silva, Mitch Silva, Mitchelson, portfólio Mitchelson Silva, Senior Mobile Architect, React Native, React Native Developer, TypeScript, Mobile Architect Brazil, Tá na Promo, Zenvix, Pigz, Konta',
   url: SITE_URL,
   image: `${SITE_URL}/og-image.jpg`,
   twitterHandle: '@mitchelson',
   author: 'Mitchelson Silva',
   jobTitle: 'Senior Mobile Architect',
+  alternateNames: ['Mitch Silva', 'Mitchelson', 'Mitchelson PS'],
 } as const;
 
 export const CONTACT = {
@@ -28,7 +31,7 @@ export const CONTACT = {
   phoneE164: '5595991151464',
   whatsapp: 'https://wa.me/5595991151464',
   linkedin: {
-    url: 'https://linkedin.com/in/miitch',
+    url: 'https://www.linkedin.com/in/miitch',
     label: 'linkedin.com/in/miitch',
   },
   github: {
@@ -44,17 +47,28 @@ export const SOCIAL_LINKS = {
   whatsapp: CONTACT.whatsapp,
 } as const;
 
-export const STRUCTURED_DATA = {
+export const STRUCTURED_DATA_PERSON = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': `${SITE_URL}/#person`,
   name: CONTACT.name,
+  alternateName: [...SEO_CONFIG.alternateNames],
   jobTitle: CONTACT.jobTitle,
+  description: SEO_CONFIG.description,
   url: SITE_URL,
+  image: SEO_CONFIG.image,
   email: CONTACT.email,
+  telephone: `+${CONTACT.phoneE164}`,
+  nationality: 'Brazilian',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'BR',
+  },
   sameAs: [CONTACT.linkedin.url, CONTACT.github.url],
   knowsAbout: [
     'React Native',
     'TypeScript',
+    'Expo',
     'Mobile Development',
     'iOS Development',
     'Android Development',
@@ -62,4 +76,36 @@ export const STRUCTURED_DATA = {
     'AI Integration',
     'Enterprise Applications',
   ],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Invillia',
+  },
 } as const;
+
+export const STRUCTURED_DATA_WEBSITE = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
+  name: 'Mitchelson Silva Portfolio',
+  alternateName: 'Portfólio Mitchelson Silva',
+  url: SITE_URL,
+  description: SEO_CONFIG.description,
+  inLanguage: ['en', 'pt-BR'],
+  author: { '@id': `${SITE_URL}/#person` },
+  publisher: { '@id': `${SITE_URL}/#person` },
+} as const;
+
+export const STRUCTURED_DATA_PROFILE = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${SITE_URL}/#profilepage`,
+  url: SITE_URL,
+  name: SEO_CONFIG.title,
+  description: SEO_CONFIG.description,
+  inLanguage: ['en', 'pt-BR'],
+  mainEntity: { '@id': `${SITE_URL}/#person` },
+  about: { '@id': `${SITE_URL}/#person` },
+} as const;
+
+/** @deprecated Use STRUCTURED_DATA_PERSON */
+export const STRUCTURED_DATA = STRUCTURED_DATA_PERSON;

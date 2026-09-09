@@ -1,12 +1,20 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
-import { Camera, BarChart2, UtensilsCrossed, Wallet, ArrowUpRight } from 'lucide-react';
+import { Camera, BarChart2, UtensilsCrossed, Wallet, ArrowUpRight, Tag } from 'lucide-react';
 
 export default function Projects() {
   const { t } = useTranslation();
 
   const projects = [
+    {
+      id: 'taNaPromo',
+      title: t('projects.taNaPromo.title'),
+      description: t('projects.taNaPromo.description'),
+      tags: ['React Native', 'NestJS', 'MongoDB', 'AI'],
+      icon: Tag,
+      link: t('projects.taNaPromo.link'),
+    },
     {
       id: 'zenvixFotos',
       title: t('projects.zenvixFotos.title'),

@@ -22,6 +22,11 @@ const resources = {
       },
       projects: {
         title: "Featured Projects",
+        taNaPromo: {
+          title: "Tá na Promo",
+          description: "Grocery deals in your pocket — nearby supermarket flyers by category and store, favorites, and price-drop alerts. Built with React Native; product by Zenvix Labs.",
+          link: "https://tanapromo.app",
+        },
         zenvixFotos: {
           title: "Zenvix Fotos",
           description: "Event photo marketplace with on-device facial recognition. Find and buy high-res photos from weddings, graduations, sports and parties — PIX or card, built for photographers.",
@@ -90,6 +95,11 @@ const resources = {
       },
       projects: {
         title: "Projetos em Destaque",
+        taNaPromo: {
+          title: "Tá na Promo",
+          description: "Panfletos no bolso — promoções de supermercado perto de você por categoria e mercado, favoritos e alertas de preço. Feito com React Native; produto da Zenvix Labs.",
+          link: "https://tanapromo.app",
+        },
         zenvixFotos: {
           title: "Zenvix Fotos",
           description: "Marketplace de fotos de eventos com reconhecimento facial no navegador. Encontre e compre fotos em alta resolução de casamentos, formaturas, esportes e festas — PIX ou cartão, feito para fotógrafos.",

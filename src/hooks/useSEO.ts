@@ -24,7 +24,8 @@ export function useSEO(props?: SEOProps) {
 
   useEffect(() => {
     const isPt = lang === 'pt' || lang.startsWith('pt');
-    const title = props?.title ?? SEO_CONFIG.title;
+    const title =
+      props?.title ?? (isPt ? SEO_CONFIG.titlePt : SEO_CONFIG.title);
     const description =
       props?.description ??
       (isPt ? SEO_CONFIG.descriptionPt : SEO_CONFIG.description);
