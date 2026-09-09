@@ -1,25 +1,34 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+
+function normalizeLang(lng: string): 'en' | 'pt' {
+  return lng.startsWith('pt') ? 'pt' : 'en';
+}
 
 /**
  * Sync the HTML lang attribute with i18n language.
- * Also applies ?lang=en|pt from the URL on first load.
+ * Applies ?lang=en|pt from the URL once on first load.
  */
 export function useHtmlLang() {
   const { i18n } = useTranslation();
+  const didReadQuery = useRef(false);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const langParam = params.get('lang');
-    if (langParam === 'en' || langParam === 'pt') {
-      if (i18n.language !== langParam) {
-        void i18n.changeLanguage(langParam);
-      }
+    if (didReadQuery.current) return;
+    didReadQuery.current = true;
+
+    const langParam = new URLSearchParams(window.location.search).get('lang');
+    if (langParam !== 'en' && langParam !== 'pt') return;
+
+    if (normalizeLang(i18n.language) !== langParam) {
+      void i18n.changeLanguage(langParam);
     }
-  }, [i18n]);
+    // Intentionally run once on mount; i18n singleton is stable.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    const currentLang = i18n.language.startsWith('pt') ? 'pt' : 'en';
+    const currentLang = normalizeLang(i18n.language);
     document.documentElement.lang = currentLang;
 
     const url = new URL(window.location.href);

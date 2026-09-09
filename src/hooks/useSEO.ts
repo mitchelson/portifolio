@@ -56,5 +56,12 @@ export function useSEO(props?: SEOProps) {
       'content',
       isPt ? 'pt_BR' : 'en_US',
     );
-  }, [lang, props]);
+  }, [
+    lang,
+    props?.title,
+    props?.description,
+    props?.keywords,
+    props?.image,
+    props?.url,
+  ]);
 }

@@ -21,11 +21,14 @@ export default function Navbar() {
   };
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
     setMobileOpen(false);
+    // Defer until the mobile drawer closes so layout height is correct.
+    requestAnimationFrame(() => {
+      const element = document.getElementById(id);
+      if (!element) return;
+      const top = element.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
   };
 
   const langLabel = i18n.language.startsWith('pt') ? 'PT' : 'EN';
